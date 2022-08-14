@@ -26,7 +26,7 @@ minTimeBetweenRestartsMins := 0.25
 exeName = Wires-X.exe
 
 logFile := A_ScriptDir "\AutoRestartWiresX.log"
-logFile := "*" ; Uncomment to use console logging, instead of log files
+;logFile := "*" ; Uncomment to use console logging, instead of log files
 
 ; Localisation
 timeStampFmt = yyyy-MM-dd HH:mm:ss
