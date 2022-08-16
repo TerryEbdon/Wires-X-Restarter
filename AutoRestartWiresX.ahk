@@ -38,6 +38,7 @@ logMessage( "Triger title: " . wiresxMsgboxTitle )
 logMessage( "Trgger exe:   " . exeName )
 logMessage( "Trgger text:  " . wiresxMsgboxTriggerText )
 
+DetectHiddenWindows, On ; Interact with pop-up when it's behind another window
 Loop {
   logMessage( "Waiting for a Wires-X restart request." )
   WinWait, %wiresxMsgboxTitle% ahk_exe %exeName%,%wiresxMsgboxTriggerText%
