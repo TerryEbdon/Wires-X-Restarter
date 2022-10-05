@@ -80,6 +80,22 @@ logScriptVersion() {
   logMessage( "Script: path:     " . A_ScriptFullPath )
   logMessage( "Script timestamp: " . scriptTimeFormatted )
   logMessage( "Script size:      " . scriptSize . " bytes" )
+  logHashes()
+}
+
+logHashes() {
+  logMessage( "v-- Script Hashes --v")
+  logHash( A_ScriptName )
+  logHash( "Config.ahk" )
+  logMessage( "^-- Script Hashes --^")
+}
+
+logHash( file ) {
+  cmd := "cmd.exe /q /c CertUtil -hashfile " . file
+  certUtilOutput := ComObjCreate("WScript.Shell").Exec( cmd ).StdOut.ReadAll()
+  outputArr := ( StrSplit( certUtilOutput, "`r`n" ) )
+  sha1Hash  := outputArr[2]
+  logMessage( sha1Hash . " " . file )
 }
 
 /* Log text from the Wires-X message box
