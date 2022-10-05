@@ -1,0 +1,11 @@
+*.bak
+*.log
+*.pdf
+*.png
+*.zip
+Config-sim.ahk
+WiresxSim.groovy
+DOBM test-scripts/
+DOBM test-scripts/
+AutoRestartWiresX-noText.ahk
+AutoRestartWiresX-sim.ahk

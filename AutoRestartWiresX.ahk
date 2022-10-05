@@ -35,8 +35,8 @@ SetWorkingDir, %A_ScriptDir%
 #Include, Config.ahk
 
 logMessage( "Triger title: " . wiresxMsgboxTitle )
-logMessage( "Trgger exe:   " . exeName )
-logMessage( "Trgger text:  " . wiresxMsgboxTriggerText )
+logMessage( "Trigger exe:  " . exeName )
+logMessage( "Trigger text: " . wiresxMsgboxTriggerText )
 
 DetectHiddenWindows, On ; Interact with pop-up when it's behind another window
 Loop {
