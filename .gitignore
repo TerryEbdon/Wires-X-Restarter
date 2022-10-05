@@ -9,3 +9,5 @@ DOBM test-scripts/
 DOBM test-scripts/
 AutoRestartWiresX-noText.ahk
 AutoRestartWiresX-sim.ahk
+Releases/
+logs/
