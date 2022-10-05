@@ -34,13 +34,14 @@ SetWorkingDir, %A_ScriptDir%
 #Include %A_ScriptDir%
 #Include, Config.ahk
 
-logMessage( "Triger title: " . wiresxMsgboxTitle )
-logMessage( "Trigger exe:  " . exeName )
-logMessage( "Trigger text: " . wiresxMsgboxTriggerText )
+logScriptVersion()
+logMessage( "Trigger title:    " . wiresxMsgboxTitle )
+logMessage( "Trigger exe:      " . exeName )
+logMessage( "Trigger text:     " . wiresxMsgboxTriggerText )
 
 DetectHiddenWindows, On ; Interact with pop-up when it's behind another window
 Loop {
-  logMessage( "Waiting for a Wires-X restart request." )
+  logMessage( "Waiting for a WIRES-X restart request." )
   WinWait, %wiresxMsgboxTitle% ahk_exe %exeName%,%wiresxMsgboxTriggerText%
 
   logWiresxRestartRequest()
@@ -67,6 +68,18 @@ infiniteLoopBreaker() {
   Sleep, %sleepTime%
   logMessage( "Almost awake" )
   Sleep, 15000 ; Back stop, in case of misconfiguration.
+}
+
+logScriptVersion() {
+  FileGetVersion, ahkVersion, %A_ProgramFiles%\AutoHotkey\AutoHotkey.exe
+  FileGetSize,    scriptSize, %A_ScriptName%, b
+  FileGetTime,    scriptTime, %A_ScriptName%
+  FormatTime,     scriptTimeFormatted, %scriptTime%, yyyy-MM-dd HH:mm:ss
+
+  logMessage( "AHK Version:      " . ahkVersion )
+  logMessage( "Script: path:     " . A_ScriptFullPath )
+  logMessage( "Script timestamp: " . scriptTimeFormatted )
+  logMessage( "Script size:      " . scriptSize . " bytes" )
 }
 
 /* Log text from the Wires-X message box
