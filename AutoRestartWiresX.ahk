@@ -46,6 +46,7 @@ Loop {
   WinWait, %wiresxMsgboxTitle% ahk_exe %exeName%,%wiresxMsgboxTriggerText%
 
   logWiresxRestartRequest()
+  WinActivate, %wiresxMsgboxTitle% ahk_exe %exeName%,%wiresxMsgboxTriggerText%
   SendInput {Space}
   infiniteLoopBreaker()
 }
