@@ -35,6 +35,7 @@ SetWorkingDir, %A_ScriptDir%
 #Include, Config.ahk
 
 logScriptVersion()
+logSystemDetails()
 logMessage( "Trigger title:    " . wiresxMsgboxTitle )
 logMessage( "Trigger exe:      " . exeName )
 logMessage( "Trigger text:     " . wiresxMsgboxTriggerText )
@@ -68,6 +69,24 @@ infiniteLoopBreaker() {
   Sleep, %sleepTime%
   logMessage( "Almost awake" )
   Sleep, 15000 ; Back stop, in case of misconfiguration.
+}
+
+logSystemDetails() {
+  if ( A_Is64bitOS ) {
+    osWordSize = 64
+  } else {
+    osWordSize = 32
+  }
+
+  logMessage( "v--  OS Details   --v")
+  logMessage( "OS Version:            " . A_OSVersion )
+  logMessage( "OS word size:          " . osWordSize )
+  logMessage( "Pointer size:          " . A_PtrSize )
+  logMessage( "Language:              " . A_Language )
+  logMessage( "Computer name:         " . A_ComputerName )
+  logMessage( "Logged in as:          " . A_UserName )
+  logMessage( "Is admin:              " . A_IsAdmin )
+  logMessage( "^--  OS Details   --^")
 }
 
 logScriptVersion() {
