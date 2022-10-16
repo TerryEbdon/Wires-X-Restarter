@@ -72,6 +72,23 @@ infiniteLoopBreaker() {
   Sleep, 15000 ; Back stop, in case of misconfiguration.
 }
 
+getLogFileName() {
+  global logFile
+  global logNamePrefixTimeStampFmt
+
+  if ( logFile != "*" ) {
+    SplitPath, logFile, logFileName, logDir,,,
+    if !FileExist( logDir ) {
+      FileCreateDir, %logDir%
+    }
+    FormatTime, timeStamp,, %logNamePrefixTimeStampFmt%
+    rollingLogFileName := logDir . "\" timeStamp . "_" . logFileName
+  } else {
+    rollingLogFileName = "*"
+  }
+  return rollingLogFileName
+}
+
 logSystemDetails() {
   if ( A_Is64bitOS ) {
     osWordSize = 64
@@ -141,5 +158,6 @@ logMessage( message ) {
   global timeStampFmt
   FormatTime, now,, %timeStampFmt%
   outMessage := now . " " . message . "`n"
-  FileAppend, % outMessage, %logFile%
+  logFilePath := getLogFileName()
+  FileAppend, % outMessage, %logFilePath%   ; 
 }
